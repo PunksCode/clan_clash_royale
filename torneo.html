@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo - Jujuy Royale</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="torneo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="header">
+        <section class="logo">
+            <img src="logo.png" alt="Logo de Jujuy Royale" class="logo">
+        </section>
+        <div>
+            <h1>Jujuy Royale</h1>
+        </div>
+        <nav class="header__info">
+            <ul class="header__list">
+                <li class="li"><a href="index.html">Sorteos</a></li>
+                <li class="li"><a href="torneo.html">Torneo</a></li>
+                <li class="li"><a href="clan.html">Info del Clan</a></li>
+            </ul>
+        </nav>    
+        </header>
+
+        <!-- Setup Panel -->
+        <div class="torneo-setup" id="torneoSetup">
+            <h2>⚔️ Crear Torneo</h2>
+            <div class="setup-controls">
+                <select id="bracketSize">
+                    <option value="8">8 Jugadores</option>
+                    <option value="12">12 Jugadores (con byes)</option>
+                    <option value="16" selected>16 Jugadores</option>
+                </select>
+                <input type="text" id="playerNameInput" placeholder="Nombre del jugador" autocomplete="off">
+                <button class="btn-add" id="addPlayerBtn">Añadir Jugador</button>
+                <button class="btn-generate" id="generateBracketBtn" disabled>🏆 GENERAR FIXTURE</button>
+            </div>
+
+            <div class="players-preview">
+                <h3>Jugadores</h3>
+                <ul id="setupPlayersList"></ul>
+                <p class="player-count" id="playerCount">0 / 16 jugadores</p>
+            </div>
+        </div>
+
+        <!-- Bracket -->
+        <div class="bracket-container" id="bracketContainer">
+            <div class="bracket-wrapper" id="bracketWrapper"></div>
+            <button class="btn-reset" id="resetBtn">Reiniciar Torneo</button>
+        </div>
+
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="confirm-modal hidden" id="confirmModal">
+        <div class="confirm-content">
+            <h3>¿Confirmar Ganador?</h3>
+            <p>¿El jugador <span class="player-highlight" id="confirmPlayerName"></span> ganó esta partida?</p>
+            <div class="confirm-buttons">
+                <button class="btn-yes" id="confirmYes">Sí</button>
+                <button class="btn-no" id="confirmNo">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="torneo.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* --- Info del Clan --- */
+.clan-page {
+    max-width: 980px;
+    margin: 26px auto;
+    padding: 0 8px;
+}
+
+.quienes-somos {
+    border: 2px solid rgba(252, 207, 77, 0.35);
+    border-radius: 18px;
+    padding: 28px;
+    background:
+        radial-gradient(circle at top right, rgba(252, 207, 77, 0.14) 0%, rgba(252, 207, 77, 0) 45%),
+        linear-gradient(145deg, rgba(20, 31, 56, 0.94), rgba(10, 17, 34, 0.94));
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    text-align: left;
+}
+
+.quienes-somos__badge {
+    display: inline-block;
+    margin: 0 0 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(252, 207, 77, 0.18);
+    color: var(--cr-gold);
+    font-size: 0.9rem;
+}
+
+.quienes-somos h2 {
+    margin: 0 0 12px;
+    color: var(--cr-gold);
+    font-size: 2rem;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.quienes-somos p {
+    margin: 0 0 12px;
+    line-height: 1.6;
+    color: #f1f3f7;
+    font-size: 1rem;
+}
+
+.quienes-somos p:last-child {
+    margin-bottom: 0;
+}
+
+.quienes-somos strong {
+    color: var(--cr-gold);
+    text-shadow: 0 0 10px rgba(252, 207, 77, 0.25);
+}
+
+.staff-clan {
+    margin-top: 18px;
+    border: 2px solid rgba(252, 207, 77, 0.35);
+    border-radius: 18px;
+    padding: 24px 28px;
+    background:
+        radial-gradient(circle at top right, rgba(252, 207, 77, 0.12) 0%, rgba(252, 207, 77, 0) 45%),
+        linear-gradient(145deg, rgba(20, 31, 56, 0.9), rgba(10, 17, 34, 0.92));
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    text-align: left;
+}
+
+.staff-clan__badge {
+    display: inline-block;
+    margin: 0 0 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(252, 207, 77, 0.18);
+    color: var(--cr-gold);
+    font-size: 0.9rem;
+}
+
+.staff-clan h2 {
+    margin: 0 0 14px;
+    color: var(--cr-gold);
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.staff-clan__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+}
+
+.staff-clan__item:last-child {
+    margin-bottom: 0;
+}
+
+.staff-clan__item--stack {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.staff-clan__role {
+    color: #d7dce8;
+    font-size: 0.95rem;
+}
+
+.staff-clan__name {
+    color: var(--cr-gold);
+    font-size: 1.05rem;
+    text-shadow: 0 0 8px rgba(252, 207, 77, 0.25);
+}
+
+@media (max-width: 700px) {
+    .quienes-somos {
+        padding: 22px;
+    }
+
+    .quienes-somos h2 {
+        font-size: 1.6rem;
+    }
+
+    .staff-clan {
+        padding: 22px;
+    }
+
+    .staff-clan h2 {
+        font-size: 1.45rem;
+    }
+
+    .staff-clan__item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo Pass Royale</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="normalize.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="header">
+        <section class="logo">
+            <img src="logo.png" alt="Logo de Jujuy Royale" class="logo">
+        </section>
+        <div>
+            <h1>Jujuy Royale</h1>
+        </div>
+        <nav class="header__info">
+            <ul class="header__list">
+                <li class="li"><a href="index.html">Sorteos</a></li>
+                <li class="li"><a href="torneo.html">Torneo</a></li>
+                <li class="li"><a href="clan.html">Info del Clan</a></li>
+            </ul>
+        </nav>    
+        </header>
+
+        <div class="content-wrapper">
+            <div class="control-panel">
+                <div class="input-group">
+                    <input type="text" id="participantName" placeholder="Nombre del jugador" autocomplete="off">
+                    <input type="number" id="chances" min="1" value="1" placeholder="Número de Chances (ej: 4, 11)">
+                    <button id="addBtn" onclick="addParticipant()">Añadir</button>
+                </div>
+
+                <div class="list-container">
+                    <h3>Participantes</h3>
+                    <ul id="participantsList">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="roulette-section">
+                <div class="pointer-container">
+                    <div class="pointer"></div>
+                </div>
+                <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                <button id="spinBtn" class="spin-btn" onclick="spinWheel()">¡GIRAR!</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="winnerModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>¡GANADOR!</h2>
+            <p id="winnerText"></p>
+            <button onclick="closeModal()">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
