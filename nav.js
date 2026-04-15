@@ -8,11 +8,21 @@
 
     if (!hamburger || !navList || !overlay) return;
 
+    // Marcar link activo según la página actual
+    (function setActiveLink() {
+        const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+        navList.querySelectorAll('a[href]').forEach(function (a) {
+            const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+            if (href && href === current) a.classList.add('active');
+        });
+    })();
+
     function openMenu() {
         hamburger.classList.add('open');
         navList.classList.add('open');
         overlay.classList.add('open');
         hamburger.setAttribute('aria-expanded', 'true');
+        overlay.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
 
@@ -21,6 +31,7 @@
         navList.classList.remove('open');
         overlay.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
+        overlay.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     }
 

@@ -1,0 +1,152 @@
+// ============================================
+//   MIXINS — Reusable patterns
+// ============================================
+
+@use 'variables' as *;
+
+// ─── Buttons ─────────────────────────────────────────────────────
+
+/// Botón base con efecto "3D press" al hacer :active
+/// @param {Color} $bg - Color de fondo
+/// @param {Color} $border-color - Color del borde inferior
+/// @param {Color} $text-color - Color del texto
+/// @param {Number} $border-width [4px] - Grosor del borde inferior
+@mixin btn-press($bg, $border-color, $text-color, $border-width: 4px) {
+    background-color: $bg;
+    border: none;
+    border-bottom: $border-width solid $border-color;
+    color: $text-color;
+    cursor: pointer;
+    border-radius: $border-radius-sm;
+    font-family: inherit;
+    transition: transform 0.1s;
+
+    &:active {
+        transform: translateY(2px);
+        border-bottom-width: max(1px, $border-width - 2px);
+    }
+}
+
+/// Botón principal dorado (gold)
+@mixin btn-gold {
+    @include btn-press($cr-gold, $cr-gold-shadow, #4a2c00, 5px);
+    text-transform: uppercase;
+}
+
+/// Botón verde (añadir / confirmar)
+@mixin btn-green {
+    @include btn-press(#55efc4, #00b894, #004d3d);
+}
+
+/// Botón rojo (eliminar / cancelar)
+@mixin btn-red {
+    @include btn-press(#eb4d4b, #c0392b, white);
+}
+
+/// Botón púrpura (manual)
+@mixin btn-purple {
+    @include btn-press(#a29bfe, #5f27cd, #1a0070);
+}
+
+// ─── Cards / Panels ──────────────────────────────────────────────
+
+/// Panel oscuro con borde (usado en setup, control-panel, etc.)
+@mixin dark-panel {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #444;
+    border-radius: $border-radius-lg;
+}
+
+/// Card con detalle dorado (quienes-somos, staff-clan)
+/// @param {Number} $gold-opacity [0.14] - Opacidad del brillo dorado
+@mixin gold-card($gold-opacity: 0.14) {
+    border: 2px solid rgba($cr-gold, 0.35);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at top right, rgba($cr-gold, $gold-opacity) 0%, rgba($cr-gold, 0) 45%),
+        linear-gradient(145deg, rgba(20, 31, 56, 0.94), rgba(10, 17, 34, 0.94));
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    text-align: left;
+}
+
+// ─── Text ────────────────────────────────────────────────────────
+
+/// Título dorado con text-shadow
+@mixin gold-title($font-size: 2rem) {
+    color: $cr-gold;
+    font-size: $font-size;
+    text-shadow: 2px 2px 0 #000;
+}
+
+/// Badge inline (pill dorado)
+@mixin gold-badge {
+    display: inline-block;
+    margin: 0 0 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba($cr-gold, 0.18);
+    color: $cr-gold;
+    font-size: 0.9rem;
+}
+
+// ─── Lists ───────────────────────────────────────────────────────
+
+/// Item de lista con fondo translúcido
+@mixin list-item {
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/// Botón de eliminar pequeño (✕)
+@mixin delete-icon($size: 25px) {
+    @include btn-red;
+    width: $size;
+    height: $size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-bottom-width: 3px;
+    padding: 0;
+}
+
+// ─── Modals ──────────────────────────────────────────────────────
+
+/// Overlay de fondo para modal
+@mixin modal-overlay($bg: rgba(0, 0, 0, 0.75)) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+// ─── Responsive ──────────────────────────────────────────────────
+
+/// Media query shortcut
+@mixin mobile {
+    @media (max-width: $bp-mobile) { @content; }
+}
+
+@mixin tablet {
+    @media (max-width: $bp-tablet) { @content; }
+}
+
+@mixin desktop {
+    @media (min-width: $bp-desktop) { @content; }
+}

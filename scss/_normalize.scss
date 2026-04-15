@@ -2,6 +2,9 @@
 //   NORMALIZE & BASE STYLES
 // ============================================
 
+@use 'variables' as *;
+@use 'mixins' as *;
+
 :root {
     --cr-blue:        #{$cr-blue};
     --cr-dark-blue:   #{$cr-dark-blue};
@@ -11,8 +14,15 @@
     --bg-color:       #{$bg-color};
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+* {
     font-family: $font-main;
     list-style: none;
 }
@@ -27,11 +37,16 @@ body {
     justify-content: center;
     min-height: 100vh;
 
-    @media (max-width: $bp-tablet) {
+    @include tablet {
         padding: 12px;
     }
 
-    @media (max-width: $bp-mobile) {
+    @include mobile {
         padding: 8px;
     }
+}
+
+// Utilidad global
+.hidden {
+    display: none !important;
 }

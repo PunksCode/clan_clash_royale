@@ -1,2 +1,11 @@
 prueba.js
 prueba2.js
+
+# Dependencies
+node_modules/
+
+# Build artifacts (optional but recommended)
+*.map
+
+# OS / editor
+.DS_Store

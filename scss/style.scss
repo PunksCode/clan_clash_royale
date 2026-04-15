@@ -1,6 +1,18 @@
 // ============================================
-//   ENTRY POINT — style.css (index.html)
-//   Compila a: style.css
+//   ENTRY POINT — style.css (index.html / Sorteo)
+//   Compila a: css/style.css
 // ============================================
+
+// 1. Config
 @use 'variables' as *;
-@use 'sorteo';
+@use 'mixins' as *;
+
+// 2. Base
+@use '_normalize';
+@use '_animations';
+
+// 3. Components
+@use '_header';
+
+// 4. Page
+@use '_sorteo';

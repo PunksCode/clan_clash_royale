@@ -1,6 +1,18 @@
 // ============================================
-//   ENTRY POINT — clan.css
-//   Compila a: clan.css
+//   ENTRY POINT — clan.css (clan.html)
+//   Compila a: css/clan.css
 // ============================================
+
+// 1. Config
 @use 'variables' as *;
-@use 'clan';
+@use 'mixins' as *;
+
+// 2. Base
+@use '_normalize';
+@use '_animations';
+
+// 3. Components
+@use '_header';
+
+// 4. Page
+@use '_clan';

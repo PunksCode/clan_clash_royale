@@ -1,6 +1,18 @@
 // ============================================
-//   ENTRY POINT — torneo.css
-//   Compila a: torneo.css
+//   ENTRY POINT — torneo.css (torneo.html)
+//   Compila a: css/torneo.css
 // ============================================
+
+// 1. Config
 @use 'variables' as *;
-@use 'torneo';
+@use 'mixins' as *;
+
+// 2. Base
+@use '_normalize';
+@use '_animations';
+
+// 3. Components
+@use '_header';
+
+// 4. Page
+@use '_torneo';

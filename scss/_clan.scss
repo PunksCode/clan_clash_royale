@@ -1,57 +1,46 @@
 // ============================================
-//   CLAN PAGE — clan.scss
+//   CLAN PAGE — Info del clan
 // ============================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
 
 .clan-page {
     max-width: 980px;
     margin: 26px auto;
     padding: 0 8px;
 
-    @media (max-width: $bp-mobile) {
+    @include mobile {
         margin: 16px auto;
     }
 }
 
 // ─── Quienes Somos ───────────────────────────────────────────────
 .quienes-somos {
-    border: 2px solid rgba(252, 207, 77, 0.35);
-    border-radius: 18px;
+    @include gold-card(0.14);
     padding: 28px;
-    background:
-        radial-gradient(circle at top right, rgba(252, 207, 77, 0.14) 0%, rgba(252, 207, 77, 0) 45%),
-        linear-gradient(145deg, rgba(20, 31, 56, 0.94), rgba(10, 17, 34, 0.94));
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    text-align: left;
 
-    @media (max-width: $bp-tablet) {
+    @include tablet {
         padding: 22px;
     }
 
-    @media (max-width: $bp-mobile) {
+    @include mobile {
         padding: 16px;
     }
 
     &__badge {
-        display: inline-block;
-        margin: 0 0 10px;
-        padding: 6px 12px;
-        border-radius: 999px;
-        background: rgba(252, 207, 77, 0.18);
-        color: $cr-gold;
-        font-size: 0.9rem;
+        @include gold-badge;
     }
 
     h2 {
+        @include gold-title(2rem);
         margin: 0 0 12px;
-        color: $cr-gold;
-        font-size: 2rem;
-        text-shadow: 2px 2px 0 #000;
 
-        @media (max-width: $bp-tablet) {
+        @include tablet {
             font-size: 1.6rem;
         }
 
-        @media (max-width: $bp-mobile) {
+        @include mobile {
             font-size: 1.4rem;
         }
     }
@@ -69,51 +58,37 @@
 
     strong {
         color: $cr-gold;
-        text-shadow: 0 0 10px rgba(252, 207, 77, 0.25);
+        text-shadow: 0 0 10px rgba($cr-gold, 0.25);
     }
 }
 
-// ─── Staff Clan ───────────────────────────────────────────────────
+// ─── Staff Clan ──────────────────────────────────────────────────
 .staff-clan {
+    @include gold-card(0.12);
     margin-top: 18px;
-    border: 2px solid rgba(252, 207, 77, 0.35);
-    border-radius: 18px;
     padding: 24px 28px;
-    background:
-        radial-gradient(circle at top right, rgba(252, 207, 77, 0.12) 0%, rgba(252, 207, 77, 0) 45%),
-        linear-gradient(145deg, rgba(20, 31, 56, 0.9), rgba(10, 17, 34, 0.92));
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    text-align: left;
 
-    @media (max-width: $bp-tablet) {
+    @include tablet {
         padding: 22px;
     }
 
-    @media (max-width: $bp-mobile) {
+    @include mobile {
         padding: 16px;
     }
 
     &__badge {
-        display: inline-block;
-        margin: 0 0 10px;
-        padding: 6px 12px;
-        border-radius: 999px;
-        background: rgba(252, 207, 77, 0.18);
-        color: $cr-gold;
-        font-size: 0.9rem;
+        @include gold-badge;
     }
 
     h2 {
+        @include gold-title(1.8rem);
         margin: 0 0 14px;
-        color: $cr-gold;
-        font-size: 1.8rem;
-        text-shadow: 2px 2px 0 #000;
 
-        @media (max-width: $bp-tablet) {
+        @include tablet {
             font-size: 1.45rem;
         }
 
-        @media (max-width: $bp-mobile) {
+        @include mobile {
             font-size: 1.25rem;
         }
     }
@@ -138,7 +113,7 @@
             align-items: flex-start;
         }
 
-        @media (max-width: $bp-tablet) {
+        @include tablet {
             flex-direction: column;
             align-items: flex-start;
         }
@@ -152,6 +127,6 @@
     &__name {
         color: $cr-gold;
         font-size: 1.05rem;
-        text-shadow: 0 0 8px rgba(252, 207, 77, 0.25);
+        text-shadow: 0 0 8px rgba($cr-gold, 0.25);
     }
 }

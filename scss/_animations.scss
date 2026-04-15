@@ -1,0 +1,56 @@
+// ============================================
+//   ANIMATIONS — Shared keyframes
+// ============================================
+
+@use 'variables' as *;
+
+@keyframes popIn {
+    0%   { transform: scale(0); }
+    80%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes goldenGlow {
+    0% {
+        box-shadow: 0 0 5px rgba($cr-gold, 0);
+        background-position: -200% center;
+    }
+    50% {
+        box-shadow: 0 0 20px rgba($cr-gold, 0.6), 0 0 40px rgba($cr-gold, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 8px rgba($cr-gold, 0.2);
+        background-position: 200% center;
+    }
+}
+
+@keyframes slideIn {
+    0%   { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    0%   { opacity: 0; transform: translateX(20px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes championReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+        text-shadow: 2px 2px 0 black;
+    }
+    60% {
+        transform: scale(1.15);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        text-shadow: 2px 2px 0 black, 0 0 30px rgba($cr-gold, 0.8);
+    }
+}
