@@ -1,0 +1,37 @@
+// ============================================
+//   NORMALIZE & BASE STYLES
+// ============================================
+
+:root {
+    --cr-blue:        #{$cr-blue};
+    --cr-dark-blue:   #{$cr-dark-blue};
+    --cr-gold:        #{$cr-gold};
+    --cr-gold-shadow: #{$cr-gold-shadow};
+    --cr-text-stroke: #{$cr-text-stroke};
+    --bg-color:       #{$bg-color};
+}
+
+* {
+    box-sizing: border-box;
+    font-family: $font-main;
+    list-style: none;
+}
+
+body {
+    background-color: $bg-color;
+    background-image: radial-gradient(circle at center, #2b3e63 0%, #0a0e17 100%);
+    color: white;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+
+    @media (max-width: $bp-tablet) {
+        padding: 12px;
+    }
+
+    @media (max-width: $bp-mobile) {
+        padding: 8px;
+    }
+}
