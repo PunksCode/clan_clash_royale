@@ -4,9 +4,9 @@
   "description": "",
   "main": "nav.js",
   "scripts": {
-    "sass:build": "sass scss/style.scss:css/style.css scss/torneo.scss:css/torneo.css scss/clan.scss:css/clan.css --style=compressed --no-source-map",
-    "sass:dev": "sass scss/style.scss:css/style.css scss/torneo.scss:css/torneo.css scss/clan.scss:css/clan.css --style=expanded",
-    "sass:watch": "sass --watch scss/style.scss:css/style.css scss/torneo.scss:css/torneo.css scss/clan.scss:css/clan.css",
+    "sass:build": "sass scss/style.scss:css/style.css scss/torneo.scss:css/torneo.css scss/clan.scss:css/clan.css scss/eventos.scss:css/eventos.css --style=compressed --no-source-map",
+    "sass:dev": "sass scss/style.scss:css/style.css scss/torneo.scss:css/torneo.css scss/clan.scss:css/clan.css scss/eventos.scss:css/eventos.css --style=expanded",
+    "sass:watch": "sass --watch scss/style.scss:css/style.css scss/torneo.scss:css/torneo.css scss/clan.scss:css/clan.css scss/eventos.scss:css/eventos.css",
     "build": "npm run sass:build",
     "dev": "npm run sass:watch"
   },

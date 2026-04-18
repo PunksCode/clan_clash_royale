@@ -1,0 +1,18 @@
+// ============================================
+//   ENTRY POINT — eventos.css (eventos.html)
+//   Compila a: css/eventos.css
+// ============================================
+
+// 1. Config
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// 2. Base
+@use '_normalize';
+@use '_animations';
+
+// 3. Components
+@use '_header';
+
+// 4. Page
+@use '_eventos';

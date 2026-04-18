@@ -1,0 +1,372 @@
+// ============================================
+//   EVENTOS PAGE — Roadmap del clan
+// ============================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Page container ─────────────────────────────────────────────
+.eventos-page {
+    max-width: 860px;
+    margin: 30px auto;
+    padding: 0 16px;
+
+    @include tablet {
+        margin: 20px auto;
+    }
+
+    @include mobile {
+        margin: 14px auto;
+        padding: 0 10px;
+    }
+}
+
+// ─── Page Hero ──────────────────────────────────────────────────
+.eventos-hero {
+    text-align: center;
+    margin-bottom: 40px;
+
+    &__badge {
+        @include gold-badge;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        animation: fadeIn 0.6s ease;
+    }
+
+    &__title {
+        @include gold-title(2.6rem);
+        margin: 8px 0 10px;
+        letter-spacing: 1.5px;
+        animation: fadeIn 0.8s ease;
+
+        @include tablet {
+            font-size: 2rem;
+        }
+
+        @include mobile {
+            font-size: 1.7rem;
+        }
+    }
+
+    &__subtitle {
+        color: #a0aec0;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        max-width: 540px;
+        margin: 0 auto;
+        animation: fadeIn 1s ease;
+
+        @include mobile {
+            font-size: 0.95rem;
+        }
+    }
+}
+
+// ─── Roadmap container ──────────────────────────────────────────
+.roadmap {
+    position: relative;
+    padding: 20px 0;
+
+    // Vertical line connector
+    &::before {
+        content: '';
+        position: absolute;
+        left: 32px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(
+            180deg,
+            $cr-gold 0%,
+            rgba($cr-gold, 0.4) 60%,
+            rgba($cr-gold, 0.08) 100%
+        );
+        border-radius: 3px;
+        z-index: 0;
+
+        @include mobile {
+            left: 22px;
+        }
+    }
+}
+
+// ─── Roadmap item ───────────────────────────────────────────────
+.roadmap-item {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 42px;
+    animation: slideIn 0.6s ease backwards;
+
+    @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.15}s;
+        }
+    }
+
+    @include mobile {
+        padding-left: 58px;
+        margin-bottom: 32px;
+    }
+
+    // The glowing node
+    &__node {
+        position: absolute;
+        left: 18px;
+        top: 6px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        @include mobile {
+            left: 9px;
+            width: 26px;
+            height: 26px;
+            font-size: 12px;
+        }
+
+        &--upcoming {
+            background: linear-gradient(135deg, $cr-gold, $cr-gold-shadow);
+            color: #1a0e00;
+            box-shadow:
+                0 0 14px rgba($cr-gold, 0.5),
+                0 0 30px rgba($cr-gold, 0.15);
+        }
+
+        &--tentative {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: #fff;
+            box-shadow:
+                0 0 14px rgba(108, 92, 231, 0.5),
+                0 0 30px rgba(108, 92, 231, 0.15);
+        }
+
+        &--soon {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            color: #a0aec0;
+            border: 2px dashed rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    &:hover .roadmap-item__node {
+        transform: scale(1.15);
+        box-shadow:
+            0 0 20px rgba($cr-gold, 0.7),
+            0 0 40px rgba($cr-gold, 0.2);
+    }
+
+    &:hover .roadmap-item__node--tentative {
+        box-shadow:
+            0 0 20px rgba(108, 92, 231, 0.7),
+            0 0 40px rgba(108, 92, 231, 0.2);
+    }
+
+    // Card
+    &__card {
+        @include gold-card(0.08);
+        padding: 22px 24px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        cursor: default;
+
+        @include mobile {
+            padding: 16px 18px;
+        }
+
+        &:hover {
+            transform: translateX(4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+            border-color: rgba($cr-gold, 0.5);
+        }
+
+        &--tentative {
+            border-color: rgba(108, 92, 231, 0.35);
+            background:
+                radial-gradient(circle at top right, rgba(108, 92, 231, 0.12) 0%, rgba(108, 92, 231, 0) 45%),
+                linear-gradient(145deg, rgba(20, 24, 56, 0.94), rgba(10, 12, 34, 0.94));
+
+            &:hover {
+                border-color: rgba(108, 92, 231, 0.55);
+            }
+        }
+
+        &--soon {
+            border-color: rgba(255, 255, 255, 0.12);
+            border-style: dashed;
+            background:
+                linear-gradient(145deg, rgba(20, 25, 40, 0.7), rgba(10, 14, 28, 0.7));
+            opacity: 0.75;
+
+            &:hover {
+                opacity: 0.9;
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+
+    // Status pill
+    &__status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+
+        &--upcoming {
+            background: rgba($cr-gold, 0.18);
+            color: $cr-gold;
+        }
+
+        &--tentative {
+            background: rgba(108, 92, 231, 0.18);
+            color: #a29bfe;
+        }
+
+        &--soon {
+            background: rgba(255, 255, 255, 0.08);
+            color: #718096;
+        }
+    }
+
+    &__status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+
+        &--upcoming {
+            background: $cr-gold;
+            box-shadow: 0 0 6px rgba($cr-gold, 0.6);
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        &--tentative {
+            background: #a29bfe;
+            box-shadow: 0 0 6px rgba(162, 155, 254, 0.6);
+            animation: pulseDot 2.5s ease-in-out infinite;
+        }
+
+        &--soon {
+            background: #718096;
+        }
+    }
+
+    // Content
+    &__title {
+        @include gold-title(1.5rem);
+        margin: 0 0 8px;
+        line-height: 1.2;
+
+        @include mobile {
+            font-size: 1.25rem;
+        }
+    }
+
+    &__title--purple {
+        color: #a29bfe;
+        text-shadow: 2px 2px 0 #000;
+    }
+
+    &__title--muted {
+        color: #718096;
+        text-shadow: none;
+    }
+
+    &__description {
+        color: #cbd5e0;
+        font-size: 0.95rem;
+        line-height: 1.55;
+        margin: 0 0 12px;
+
+        @include mobile {
+            font-size: 0.88rem;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__detail {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #a0aec0;
+        font-size: 0.85rem;
+        margin-right: 16px;
+        margin-top: 4px;
+
+        .emoji {
+            font-size: 1rem;
+        }
+    }
+}
+
+// ─── Coming Soon special card ───────────────────────────────────
+.coming-soon-card {
+    text-align: center;
+    padding: 28px 20px !important;
+
+    &__icon {
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+        display: block;
+        animation: pulseSoon 3s ease-in-out infinite;
+
+        @include mobile {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__text {
+        color: #4a5568;
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin: 0;
+
+        @include mobile {
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+        }
+    }
+
+    &__subtext {
+        color: #2d3748;
+        font-size: 0.85rem;
+        margin: 6px 0 0;
+    }
+}
+
+// ─── Animations ─────────────────────────────────────────────────
+@keyframes pulseDot {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.4);
+    }
+}
+
+@keyframes pulseSoon {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}

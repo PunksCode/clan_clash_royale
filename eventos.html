@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Jujuy Royale</title>
+    <meta name="description" content="Próximos eventos y torneos del clan Jujuy Royale en Clash Royale. Roadmap de actividades, torneos oficiales y desafíos.">
+    <link rel="stylesheet" href="css/eventos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="header">
+            <section class="logo">
+                <img src="logo.png" alt="Logo de Jujuy Royale" class="logo">
+            </section>
+            <div>
+                <h1>Jujuy Royale</h1>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="header__info">
+                <ul class="header__list" id="navList">
+                    <li class="li"><a href="index.html">Sorteos</a></li>
+                    <li class="li"><a href="torneo.html">Torneo</a></li>
+                    <li class="li"><a href="eventos.html">Eventos</a></li>
+                    <li class="li"><a href="clan.html">Info del Clan</a></li>
+                </ul>
+            </nav>
+            <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+        </header>
+
+        <main class="eventos-page">
+            <!-- Hero -->
+            <div class="eventos-hero">
+                <span class="eventos-hero__badge">🗓️ Hoja de Ruta</span>
+                <h2 class="eventos-hero__title">Próximos Eventos</h2>
+                <p class="eventos-hero__subtitle">
+                    Todo lo que se viene para el clan. Torneos, desafíos y actividades
+                    que estamos preparando para la comunidad.
+                </p>
+            </div>
+
+            <!-- Roadmap -->
+            <div class="roadmap" id="roadmap">
+
+                <!-- Event 1: Primer Torneo Oficial -->
+                <div class="roadmap-item">
+                    <div class="roadmap-item__node roadmap-item__node--upcoming">1</div>
+                    <div class="roadmap-item__card">
+                        <span class="roadmap-item__status roadmap-item__status--upcoming">
+                            <span class="roadmap-item__status-dot roadmap-item__status-dot--upcoming"></span>
+                            Próximamente
+                        </span>
+                        <h3 class="roadmap-item__title">🏆 Primer Torneo Oficial</h3>
+                        <p class="roadmap-item__description">
+                            El debut competitivo del clan. Un torneo individual donde cada miembro
+                            demostrará su nivel en enfrentamientos directos por eliminación. El primer
+                            campeón oficial de Jujuy Royale será coronado.
+                        </p>
+                        <div>
+                            <span class="roadmap-item__detail">
+                                <span class="emoji">⚔️</span> Eliminación directa
+                            </span>
+                            <span class="roadmap-item__detail">
+                                <span class="emoji">👤</span> Individual
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2: Torneo Doble Oficial -->
+                <div class="roadmap-item">
+                    <div class="roadmap-item__node roadmap-item__node--upcoming">2</div>
+                    <div class="roadmap-item__card">
+                        <span class="roadmap-item__status roadmap-item__status--upcoming">
+                            <span class="roadmap-item__status-dot roadmap-item__status-dot--upcoming"></span>
+                            Próximamente
+                        </span>
+                        <h3 class="roadmap-item__title">🤝 Torneo Doble Oficial</h3>
+                        <p class="roadmap-item__description">
+                            Formá equipo con un compañero del clan y competí en duplas. Estrategia,
+                            coordinación y sinergía de mazos definirán a la mejor pareja del clan.
+                        </p>
+                        <div>
+                            <span class="roadmap-item__detail">
+                                <span class="emoji">⚔️</span> Torneo por equipos
+                            </span>
+                            <span class="roadmap-item__detail">
+                                <span class="emoji">👥</span> Duplas (2v2)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3: Guerra con otro Clan -->
+                <div class="roadmap-item">
+                    <div class="roadmap-item__node roadmap-item__node--tentative">3</div>
+                    <div class="roadmap-item__card roadmap-item__card--tentative">
+                        <span class="roadmap-item__status roadmap-item__status--tentative">
+                            <span class="roadmap-item__status-dot roadmap-item__status-dot--tentative"></span>
+                            En evaluación
+                        </span>
+                        <h3 class="roadmap-item__title roadmap-item__title--purple">⚔️ Guerra Inter-Clan</h3>
+                        <p class="roadmap-item__description">
+                            Estamos en conversaciones para organizar un enfrentamiento oficial contra
+                            otro clan en formato torneo. Representantes de cada clan se enfrentarían
+                            en partidas eliminatorias para definir qué clan se lleva la gloria.
+                        </p>
+                        <p class="roadmap-item__description" style="color: #a29bfe; font-size: 0.88rem;">
+                            ⚡ Este evento depende de la confirmación del clan rival y la
+                            coordinación de horarios. Se anunciará cuando haya fecha definida.
+                        </p>
+                        <div>
+                            <span class="roadmap-item__detail">
+                                <span class="emoji">🛡️</span> Clan vs Clan
+                            </span>
+                            <span class="roadmap-item__detail">
+                                <span class="emoji">📋</span> Formato a definir
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4: Coming Soon -->
+                <div class="roadmap-item">
+                    <div class="roadmap-item__node roadmap-item__node--soon">?</div>
+                    <div class="roadmap-item__card roadmap-item__card--soon coming-soon-card">
+                        <span class="coming-soon-card__icon">🔮</span>
+                        <p class="coming-soon-card__text">Coming Soon</p>
+                        <p class="coming-soon-card__subtext">Más eventos en camino...</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="nav.js"></script>
+</body>
+</html>
