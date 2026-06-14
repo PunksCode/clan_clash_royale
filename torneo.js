@@ -366,6 +366,10 @@ const BracketTorneo = (() => {
 // CLAN TOURNAMENT MODULE
 // ============================================
 
+// ============================================
+// CLAN TOURNAMENT MODULE
+// ============================================
+
 const ClanTorneo = (() => {
     const STORAGE_KEY = 'clanTorneoData';
     const NUM_TEAMS = 6;
@@ -391,7 +395,6 @@ const ClanTorneo = (() => {
         if (!raw) return false;
         try {
             const parsed = JSON.parse(raw);
-            // Merge saved teams even if phase is 0 (setup not yet started)
             if (parsed.teams && parsed.teams.length) state.teams = parsed.teams;
             if (parsed.phase !== undefined) state.phase = parsed.phase;
             if (parsed.phase1) state.phase1 = parsed.phase1;
@@ -405,7 +408,15 @@ const ClanTorneo = (() => {
 
     function clearState() {
         localStorage.removeItem(STORAGE_KEY);
-        state = { teams: [], phase: 0, phase1: [], winners1: [], phase2: [], winners2: [], phase3: [] };
+        state = { 
+            teams: Array.from({ length: NUM_TEAMS }, (_, i) => ({ name: `Equipo ${i + 1}`, player1: '', player2: '' })), 
+            phase: 0, 
+            phase1: [], 
+            winners1: [], 
+            phase2: [], 
+            winners2: [], 
+            phase3: [] 
+        };
     }
 
     function init() {
@@ -439,6 +450,14 @@ const ClanTorneo = (() => {
         DOM.phase2ManualBtn.addEventListener('click', showManualPairing);
         DOM.confirmManualBtn.addEventListener('click', buildPhase2Manual);
         DOM.resetBtn.addEventListener('click', resetClan);
+
+        // Listeners estáticos para el modal compartidos
+        DOM.confirmYes.addEventListener('click', () => {
+            if (pendingClanConfirm) confirmClanWinner();
+        });
+        DOM.confirmNo.addEventListener('click', () => {
+            if (pendingClanConfirm) closeClanConfirm();
+        });
 
         // Restore
         if (loadState() && state.phase > 0) {
@@ -568,10 +587,8 @@ const ClanTorneo = (() => {
         DOM.manualPairing.style.display = 'none';
 
         if (state.phase2.length === 0) {
-            // Show fixture options
             DOM.phase2FixtureCtrl.style.display = 'flex';
         } else {
-            // Matches already set — render them
             DOM.phase2FixtureCtrl.style.display = 'none';
             state.phase2.forEach(match => {
                 DOM.phase2Matches.appendChild(createClanMatch(match, 'phase2'));
@@ -607,7 +624,6 @@ const ClanTorneo = (() => {
             const sel = document.getElementById(id);
             sel.innerHTML = state.winners1.map(w => `<option value="${escHTML(w)}">${escHTML(w)}</option>`).join('');
         });
-        // Default different players
         const w = state.winners1;
         document.getElementById('pair1a').value = w[0];
         document.getElementById('pair1b').value = w[1];
@@ -624,7 +640,6 @@ const ClanTorneo = (() => {
             [document.getElementById('pair3a').value, document.getElementById('pair3b').value],
         ];
 
-        // Validate: no player repeated, no self-match
         const allPlayers = pairs.flat();
         const unique = new Set(allPlayers);
         const hasSelfMatch = pairs.some(([a, b]) => a === b);
@@ -745,7 +760,6 @@ const ClanTorneo = (() => {
         name.textContent = playerName || 'Por definir';
         div.appendChild(name);
 
-        // Clickable if no winner yet and both players present
         if (!match.winner && match.player1 && match.player2) {
             div.classList.add('clickable');
             div.addEventListener('click', () => showClanConfirm(match, playerName, phase));
@@ -762,8 +776,6 @@ const ClanTorneo = (() => {
         pendingClanConfirm = { match, playerName, phase };
         DOM.confirmText.textContent = playerName;
         DOM.confirmModal.classList.remove('hidden');
-        DOM.confirmYes.onclick = confirmClanWinner;
-        DOM.confirmNo.onclick = closeClanConfirm;
     }
 
     function closeClanConfirm() {
@@ -774,7 +786,9 @@ const ClanTorneo = (() => {
     function confirmClanWinner() {
         if (!pendingClanConfirm) return;
         const { match, playerName, phase } = pendingClanConfirm;
-        closeClanConfirm();
+        
+        pendingClanConfirm = null;
+        DOM.confirmModal.classList.add('hidden');
 
         match.winner = playerName;
         saveState();
@@ -803,5 +817,4 @@ const ClanTorneo = (() => {
 
     return { init };
 })();
-
 document.addEventListener('DOMContentLoaded', TorneoApp.init);
